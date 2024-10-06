@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Foody</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        /* Add some basic styles for the modal and form */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color:black;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-left">
+            <h1>Foody</h1>
+        </div>
+        <div class="nav-middle">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <i class="cart-icon">🛒</i>
+            <button class="signup-btn">Sign Up</button>
+        </div>
+    </nav>
+
+    <!-- Main Menu Section -->
+    <main>
+        <div class="menu-section">
+            <h2>Choose Your Options</h2>
+            <div class="menu-buttons">
+                <button class="btn-primary" onclick="openModal('drinks')">Add Drinks</button>
+                <button class="btn-secondary" onclick="openModal('sandwiches')">Add Plates</button>
+            </div>
+        </div>
+    
+        <div class="menu-items-container">
+    
+            <!-- Drinks Section -->
+            <div id="drinksContainer">
+                <h4>Drinks</h4>
+                <ul id="menuDrinksItems">
+                    <!-- Drinks items will be dynamically added here -->
+                </ul>
+            </div>
+    
+            <!-- Sandwiches Section -->
+            <div id="sandwichesContainer">
+                <h4>Plates</h4>
+                <ul id="menuSandwichesItems">
+                    <!-- Sandwiches items will be dynamically added here -->
+                </ul>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Modal for Adding Items -->
+    <div id="itemModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add Item</h2>
+            <form id="addItemForm" onsubmit="submitForm(event)">
+                <label for="category">Category:</label>
+                <select id="category" required>
+                    <option value="" disabled selected>Select a category</option>
+                    <option value="drinks">Drinks</option>
+                    <option value="sandwiches">Sandwiches</option>
+                </select>
+    
+                <label for="image">Add Image:</label>
+                <input type="file" id="image" accept="image/*" required>
+    
+                <label for="itemName">Item Name:</label>
+                <input type="text" id="itemName" placeholder="Item Name" required>
+    
+                <label for="itemPrice">Item Price:</label>
+                <input type="text" id="itemPrice" placeholder="Item Price" required>
+    
+                <label for="itemDetails">Item Details:</label>
+                <textarea id="itemDetails" placeholder="Item Details" required></textarea>
+    
+                <button type="submit">Add Item</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+          <div class="footer-left">
+            <p>Stay Connected</p>
+            <div class="social-icons">
+              <a href="#"><img src="facebook.png" alt="Facebook"></a>
+              <a href="#"><img src="instagram.png" alt="Instagram"></a>
+              <a href="#"><img src="linkedin.png" alt="LinkedIn"></a>
+              <a href="#"><img src="twitter.png" alt="Twitter"></a>
+            </div>
+            <div class="payment-methods">
+              <img src="googleplay.png" alt="Google Pay">
+              <img src="visa.png" alt="Visa">
+            </div>
+          </div>
+      
+          <div class="footer-center">
+            <p>Get 20% Discount For You On First Order.</p>
+            <form>
+              <input type="email" placeholder="Email Address">
+              <button type="submit">Send Now</button>
+            </form>
+          </div>
+      
+          <div class="footer-right">
+            <div class="footer-column">
+              <h4>Services</h4>
+              <a href="#">Membership</a>
+              <a href="#">Products</a>
+              <a href="#">Stories</a>
+            </div>
+      
+            <div class="footer-column">
+              <h4>About Us</h4>
+              <a href="#">About Us</a>
+              <a href="#">Our Mission</a>
+              <a href="#">Subscription</a>
+            </div>
+            <div class="footer-column">
+              <h4>Address</h4>
+              <p>Beirut, Downtown, Plasa World</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; foodish 2024 all rights reserved</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Section -->
+    <script>
+        // Array to hold menu items
+        let menuItems = []; 
+
+        // Function to open the modal and set the category
+        function openModal(category) {
+            document.getElementById('itemModal').style.display = 'block'; // Show modal
+            document.getElementById('category').value = category; // Pre-fill category
+        }
+
+        // Function to close the modal and reset the form
+        function closeModal() {
+            document.getElementById('itemModal').style.display = 'none'; // Hide modal
+            document.getElementById('addItemForm').reset(); // Reset form fields
+        }
+
+        // Handle form submission and add new item
+        function submitForm(event) {
+            event.preventDefault(); // Prevent form from submitting traditionally
+
+            // Retrieve form values
+            const category = document.getElementById('category').value;
+            const itemName = document.getElementById('itemName').value;
+            const itemPrice = document.getElementById('itemPrice').value;
+            const itemDetails = document.getElementById('itemDetails').value;
+            const imageInput = document.getElementById('image');
+            const imageUrl = imageInput.files.length ? URL.createObjectURL(imageInput.files[0]) : 'images/default.jpg'; // Use uploaded image or default
+
+            // Validate input fields
+            if (!itemName || !itemPrice || !category) {
+                alert("Please fill out all fields.");
+                return;
+            }
+
+            // Create a new item object
+            const newItem = {
+                category: category,
+                name: itemName,
+                price: `$${itemPrice}`,
+                details: itemDetails,
+                img: imageUrl
+            };
+
+            // Add item to the menuItems array
+            menuItems.push(newItem);
+
+            // Render items in their respective categories
+            renderMenuItems();
+
+            // Close modal and reset form
+            closeModal();
+        }
+
+        // Function to render menu items
+        function renderMenuItems() {
+            const drinksContainer = document.getElementById('menuDrinksItems');
+            const sandwichesContainer = document.getElementById('menuSandwichesItems');
+
+            // Clear existing items
+            drinksContainer.innerHTML = '';
+            sandwichesContainer.innerHTML = '';
+
+            // Loop through the menu items and display them
+            menuItems.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.className = 'menu-item';
+
+                // Create image element
+                const imgElement = document.createElement('img');
+                imgElement.src = item.img;
+                imgElement.alt = item.name;
+                imgElement.style.width = '50px'; // Style the image
+
+                // Create item name and price elements
+                const itemNameElement = document.createElement('span');
+                itemNameElement.className = 'item-name';
+                itemNameElement.textContent = item.name;
+
+                const itemPriceElement = document.createElement('span');
+                itemPriceElement.className = 'item-price';
+                itemPriceElement.textContent = item.price;
+
+                // Append the image, name, and price to the list item
+                listItem.appendChild(imgElement);
+                listItem.appendChild(itemNameElement);
+                listItem.appendChild(itemPriceElement);
+
+                // Append to respective category container
+                if (item.category === 'drinks') {
+                    drinksContainer.appendChild(listItem);
+                } else if (item.category === 'sandwiches') {
+                    sandwichesContainer.appendChild(listItem);
+                }
+            });
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('itemModal')) {
+                closeModal();
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foody Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+        <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
+
+      
+</head>
+<body>
+    <!-- Navigation Bar -->
+        <nav>
+            <div class="nav-left">
+                <h1>Foody</h1>
+            </div>
+            <div class="nav-middle">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="#about-us">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <i class="cart-icon">🛒</i> <!-- Replace with a cart icon of your choice -->
+                <button class="signup-btn">Sign Up</button>
+            </div>
+        </nav>
+
+    <!-- Main Content -->
+    <main>
+
+<div class="main-content">
+    <div class="left-div">
+        <h2>It's not just <br> Food, It's an <br> Experience.</h2>
+        <div class="buttons">
+            <a href="menu.html" class="btn-primary">View Menu</a>
+            <!-- <button class="btn-secondary">Book A Table</button> -->
+        </div>
+        <div class="reviews">
+            <p>Reviews:</p>
+            <div class="review-icons">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span>4.8</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="right-div">
+        <img src="salmon.jpg" alt="salmonpicture" class="main-dish">
+        <div class="discount-label">
+            <p>5% Discount for 2 orders</p>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Image Slider - 3 Images in a Row -->
+    <div class="image-slider-container">
+        <button class="slider-btn left" onclick="slideRowLeft()">&#9664;</button>
+        <div class="slider-wrapper">
+            <div class="slider">
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="raviolipicture.jpg" alt="Ravioli Stuffed" class="dish-img">
+                        <div class="cart-icon"><i class="fas fa-shopping-cart"></i></div>
+                    </div>
+                    <h3>Ravioli Stuffed</h3>
+                    <p>With Pesto Sauce</p>
+                    <span>$25.00</span>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="pappardelle.jpg" alt="Pappardelle" class="dish-img">
+                        <div class="cart-icon"><i class="fas fa-shopping-cart"></i></div>
+                    </div>
+                    <h3>Pappardelle</h3>
+                    <p>With Vegetable</p>
+                    <span>$28.00</span>
+                </div>
+                <!-- Add more cards here -->
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="alfredo.jpg" alt="Pappardelle" class="dish-img">
+                        <div class="cart-icon"><i class="fas fa-shopping-cart"></i></div>
+                    </div>
+                    <h3>Alfredo</h3>
+                    <p>With Chicken</p>
+                    <span>$30.00</span>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="ZucchiniNoodles.jpg" alt="Ravioli Stuffed" class="dish-img">
+                        <div class="cart-icon"><i class="fas fa-shopping-cart"></i></div>
+                    </div>
+                    <h3>Ravioli Stuffed</h3>
+                    <p>With Pesto Sauce</p>
+                    <span>$25.00</span>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="salmonpasta.jpg" alt="Pappardelle" class="dish-img">
+                        <div class="cart-icon"><i class="fas fa-shopping-cart"></i></div>
+                    </div>
+                    <h3>Salmon Pasta</h3>
+                    <p>With cream</p>
+                    <span>$35.00</span>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn right" onclick="slideRowRight()">&#9654;</button>
+    </div>
+
+        <!-- Single Image Slider with Controls -->
+<!-- Single Image Slider -->
+<div class="single-image-slider-container">
+    <button class="slider-btn left" onclick="slideSingleLeft()">&#9664;</button>
+    <div class="slider-wrapper">
+        <div class="slider">
+            <div class="slide">
+                <div class="image-wrapper">
+                    <img src="mocha.jpg" alt="Dish 1" class="dish-img">
+                    <div class="price-tag">$10</div>
+                </div>
+                <div class="text-wrapper">
+                    <h2>Mocha</h2>
+                    <p>Chocolate, coffee and milk, mixed to hot perfection..</p>
+        
+                </div>
+            </div>
+            <div class="slide">
+                <div class="image-wrapper">
+                    <img src="lattee.jpg" alt="Dish 2" class="dish-img">
+                    <div class="price-tag">$12</div>
+                </div>
+                <div class="text-wrapper">
+                    <h2>Caramel lattee</h2>
+                    <p> Caramel with coffee and milk, mixed to hot perfection...</p>
+                    <!-- <button class="check-btn">Check <span>&rarr;</span></button> -->
+                </div>
+            </div>
+            <div class="slide">
+                <div class="image-wrapper">
+                    <img src="macchiato.jpg" alt="Dish 2" class="dish-img">
+                    <div class="price-tag">$15</div>
+                </div>
+                <div class="text-wrapper">
+                    <h2>Caramel Macchiato</h2>
+                    <p> Caramel with coffee and milk, mixed to hot perfection...</p>
+                    <!-- <button class="check-btn">Check <span>&rarr;</span></button> -->
+                </div>
+            </div>
+            <div class="slide">
+                <div class="image-wrapper">
+                    <img src="coffee.jpg" alt="Dish 2" class="dish-img">
+                    <div class="price-tag">$5</div>
+                </div>
+                <div class="text-wrapper">
+                    <h2>Coffee</h2>
+                    <p>Coffee is mixed  with hot perfection...</p>
+                    <!-- <button class="check-btn">Check <span>&rarr;</span></button> -->
+                </div>
+            </div>
+            <!-- Add more slides as needed -->
+        </div>
+    </div>
+    <button class="slider-btn right" onclick="slideSingleRight()">&#9654;</button>
+</div>
+
+
+
+        <!-- About Us Section -->
+        <div class="about-us-container">
+            <h2>About Us</h2>
+            <div class="about-us-cards">
+                <div class="card">
+                    <img src="user.png" alt="Our Story">
+                    <p>Our Story</p>
+                </div>
+                <div class="card">
+                    <img src="user.png" alt="Our Mission">
+                    <p>Our Mission</p>
+                </div>
+                <div class="card">
+                    <img src="user.png" alt="Our Values">
+                    <p>Our Values</p>
+                </div>
+                <div class="card">
+                    <img src="user.png" alt="Our Vision">
+                    <p>Our Vision</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+              <div class="footer-left">
+                <p>Stay Connected</p>
+                <div class="social-icons">
+                  <a href="#"><img src="facebook.png" alt="Facebook"></a>
+                  <a href="#"><img src="instagram.png" alt="Instagram"></a>
+                  <a href="#"><img src="linkedin.png" alt="LinkedIn"></a>
+                  <a href="#"><img src="twitter.png" alt="Twitter"></a>
+                </div>
+                <div class="payment-methods">
+                  <img src="googleplay.png" alt="Google Pay">
+                  <img src="visa.png" alt="Visa">
+                </div>
+              </div>
+          
+              <div class="footer-center">
+                <p>Get 20% Discount For You On First Order.</p>
+                <form>
+                  <input type="email" placeholder="Email Address">
+                  <button type="submit">Send Now</button>
+                </form>
+              </div>
+          
+              <!-- Changed layout for Services, About Us, Address -->
+              <div class="footer-right">
+                <div class="footer-column">
+                  <h4>Services</h4>
+                  <a href="#">Membership</a>
+                  <a href="#">Products</a>
+                  <a href="#">Stories</a>
+                </div>
+          
+                <div class="footer-column">
+                  <h4>About Us</h4>
+                  <a href="#">About Us</a>
+                  <a href="#">Our Mission</a>
+                  <a href="#">Subscription</a>
+                </div>
+                <div class="footer-column">
+                  <h4>Address</h4>
+                  <p>Beirut, Downtown, Plasa World</p>
+                </div>
+              </div>
+            </div>
+            <div class="footer-bottom">
+              <p>&copy; foodish 2024 all rights reserved</p>
+            </div>
+          </footer>
+          
+          
+          
+    </main>
+</body>
+</html>
